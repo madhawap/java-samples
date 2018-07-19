@@ -6,13 +6,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by madhawa on 7/19/18.
+ *
  */
 public class ValidateJson {
-    static Logger log = Logger.getLogger(ValidateJsonWithGSON.class);
-    static String sampleJson = "{ \"name\":\"John\", \"age\":30, \"car\":null }\n";
+    private static Logger log = Logger.getLogger(ValidateJsonWithGSON.class);
 
     public static void main(String[] args) {
+        String sampleJson = "{ \"name\":\"John\", \"age\":30, \"car\":null }\n";
         if(isJSONValid(sampleJson)){
             log.info("Valid JSON");
         } else {
@@ -21,7 +21,7 @@ public class ValidateJson {
     }
 
 
-    public static boolean isJSONValid(String test) {
+    private static boolean isJSONValid(String test) {
         try {
             new JSONObject(test);
         } catch (JSONException ex) {
