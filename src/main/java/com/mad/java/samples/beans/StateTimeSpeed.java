@@ -1,6 +1,5 @@
 package com.mad.java.samples.beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +8,7 @@ import java.util.List;
 public class StateTimeSpeed {
 
     private MovementEvent movementEvent;
-    private List<MovementEvent> movementEventList = new ArrayList<MovementEvent>();
+    private List<MovementEvent> movementEventList;
 
 
     public MovementEvent getMovementEvent() {

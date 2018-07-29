@@ -1,6 +1,5 @@
 package com.mad.java.samples.beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,7 +9,7 @@ public class States {
 
     private MovementState movementState;
 
-    private List<MovementState> movementStateList = new ArrayList<MovementState>();
+    private List<MovementState> movementStateList;
 
     public MovementState getMovementState() {
         return movementState;
