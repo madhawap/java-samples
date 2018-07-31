@@ -151,7 +151,6 @@ public class StatesResolver {
         OMElement ppL;
         if(fileElement != null){
             log.info("Start clipping from " + fileElement.getLocalName());
-            boolean breakloop = true;
             OMElement ppGG = null;
             OMElement mm = returnOMElement(fileElement, ppGG, "states");
             log.info(" After clipping the xml  " + mm.getLocalName());

@@ -50,7 +50,11 @@ public class XMLProcessor {
     }
 
     public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();
         new XMLProcessor();
+        long endTime = System.currentTimeMillis();
+        log.error("+++++++++++++++++++++++++++++++++ Took "+(endTime - startTime) + " ms");
+
     }
 
     private OMElement mapXMLtoDOM(String fileLocation) {
