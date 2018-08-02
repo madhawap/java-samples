@@ -87,10 +87,10 @@ public class IVSMessageProcessor {
 
     private void vmsUnitDataHandler(Iterator<?> vmsUnitChildrenCheckIterator) {
         if (vmsUnitChildrenCheckIterator != null) {
+            IVSTempData ivsTempData = new IVSTempData();
+            ivsTempDataList.add(ivsTempData);
             while (vmsUnitChildrenCheckIterator.hasNext()) {
                 OMElement vmsUnitChildren = (OMElement) vmsUnitChildrenCheckIterator.next();
-                IVSTempData ivsTempData = new IVSTempData();
-                ivsTempDataList.add(ivsTempData);
                 if (vmsUnitChildren.getLocalName().equals("vmsUnitReference")) {
                     //log.error("vmsUnitDataHandler  : " + vmsUnitChildren.getAttributeValue(new QName
                     // ("id")));
@@ -217,18 +217,22 @@ public class IVSMessageProcessor {
         for (LookUpData lookUpData : lookUpDataList) {
             if (lookUpData.getAssetNumberLane1() != null && lookUpData.getAssetNumberLane1().equals(
                     assetNumber)) {
+                ivsTempData.setAssetNumber(assetNumber);
                 ivsTempData.setLane("Lane1");
                 setIVSTempValues(ivsTempData, lookUpData);
             } else if (lookUpData.getAssetNumberLane2() != null && lookUpData.getAssetNumberLane2().equals(
                     assetNumber)) {
+                ivsTempData.setAssetNumber(assetNumber);
                 ivsTempData.setLane("Lane2");
                 setIVSTempValues(ivsTempData, lookUpData);
             } else if (lookUpData.getAssetNumberLane3() != null && lookUpData.getAssetNumberLane3().equals(
                     assetNumber)) {
+                ivsTempData.setAssetNumber(assetNumber);
                 ivsTempData.setLane("Lane3");
                 setIVSTempValues(ivsTempData, lookUpData);
             } else if (lookUpData.getAssetNumberLane4() != null && lookUpData.getAssetNumberLane4().equals(
                     assetNumber)) {
+                ivsTempData.setAssetNumber(assetNumber);
                 ivsTempData.setLane("Lane4");
                 setIVSTempValues(ivsTempData, lookUpData);
             }
@@ -255,7 +259,19 @@ public class IVSMessageProcessor {
     private void getrelatedPictoCodeDetails(String pictoCode, IVSTempData ivsTempData ) {
         for(PictoCodeLookUpData pictoCodeLookUpData : pictolookUpDataList ){
             if(pictoCodeLookUpData.getHorusCode() == Integer.parseInt(pictoCode)){
-                log.error("YaY!!!!!!!!");
+                ivsTempData.setServiceCategoryCode(pictoCodeLookUpData.getServiceCategoryCode());
+                //log.error(pictoCodeLookUpData.getServiceCategoryCode());
+                //log.error(ivsTempData.getGantryLatitude());
+                ivsTempData.setPictogramCode(pictoCodeLookUpData.getPictogramCode());
+                ivsTempData.setAttrIndCode(pictoCodeLookUpData.getAttrIndCode());
+                ivsTempData.setHorusCode(Integer.parseInt(pictoCode));
+                //log.error(Integer.parseInt(pictoCode));
+                ivsTempData.setIso14823Attributes(pictoCodeLookUpData.getIso14823Attributes());
+                ivsTempData.setSpm(pictoCodeLookUpData.getSpm());
+                ivsTempData.setUnit(pictoCodeLookUpData.getUnit());
+                ivsTempData.setLaneStatus(pictoCodeLookUpData.getLaneStatus());
+            } else {
+                ivsTempData.setHorusCode(Integer.parseInt(pictoCode));
             }
         }
     }
@@ -263,8 +279,10 @@ public class IVSMessageProcessor {
     private void getIVSTempData() {
         int m = 0;
         for (IVSTempData ivsTempData : ivsTempDataList) {
-            log.error("----------------------- Look up table Row " + m + "----------------------------");
+            log.error("========================= Look up table Row " + m + " =========================");
             if (ivsTempData.getGantryLatitude() != 0.0) {
+
+                log.error(ivsTempData.getAssetNumber());
                 log.error(ivsTempData.getGantryLatitude());
                 log.error(ivsTempData.getGantryLongitude());
                 log.error(ivsTempData.getGantryNumber());
@@ -280,6 +298,15 @@ public class IVSMessageProcessor {
                 log.error(ivsTempData.getHeading2());
                 log.error(ivsTempData.getDirectionOfTravel());
                 log.error(ivsTempData.getLane());
+                log.error("-------- Picto Code Details --------");
+                log.error(ivsTempData.getHorusCode());
+                log.error(ivsTempData.getServiceCategoryCode());
+                log.error(ivsTempData.getPictogramCode());
+                log.error(ivsTempData.getAttrIndCode());
+                log.error(ivsTempData.getIso14823Attributes());
+                log.error(ivsTempData.getSpm());
+                log.error(ivsTempData.getUnit());
+                log.error(ivsTempData.getLaneStatus());
             }
             m++;
         }

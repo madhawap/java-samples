@@ -7,7 +7,7 @@ public class IVSTempData {
 
     private String assetNumber;
 
-    private int serviceCategory_Code;
+    private int serviceCategoryCode;
     private int pictogramCode;
     private int attrIndCode;
     private int horusCode;
@@ -40,12 +40,12 @@ public class IVSTempData {
         this.assetNumber = assetNumber;
     }
 
-    public int getServiceCategory_Code() {
-        return serviceCategory_Code;
+    public int getServiceCategoryCode() {
+        return serviceCategoryCode;
     }
 
-    public void setServiceCategory_Code(int serviceCategory_Code) {
-        this.serviceCategory_Code = serviceCategory_Code;
+    public void setServiceCategoryCode(int serviceCategoryCode) {
+        this.serviceCategoryCode = serviceCategoryCode;
     }
 
     public int getPictogramCode() {
