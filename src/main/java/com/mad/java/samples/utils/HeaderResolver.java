@@ -1,6 +1,6 @@
 package com.mad.java.samples.utils;
 
-import com.mad.java.samples.beans.Headers;
+import com.mad.java.samples.spatbeans.Headers;
 import org.apache.axiom.om.OMElement;
 
 import javax.xml.namespace.QName;

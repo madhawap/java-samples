@@ -1,11 +1,11 @@
 package com.mad.java.samples.utils;
 
 import com.mad.java.samples.XMLProcessor;
-import com.mad.java.samples.beans.EventState;
-import com.mad.java.samples.beans.MovementEvent;
-import com.mad.java.samples.beans.MovementState;
-import com.mad.java.samples.beans.StateTimeSpeed;
-import com.mad.java.samples.beans.Timing;
+import com.mad.java.samples.spatbeans.EventState;
+import com.mad.java.samples.spatbeans.MovementEvent;
+import com.mad.java.samples.spatbeans.MovementState;
+import com.mad.java.samples.spatbeans.StateTimeSpeed;
+import com.mad.java.samples.spatbeans.Timing;
 import org.apache.axiom.om.OMElement;
 import org.apache.log4j.Logger;
 

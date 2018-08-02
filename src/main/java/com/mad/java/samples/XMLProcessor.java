@@ -1,6 +1,6 @@
 package com.mad.java.samples;
 
-import com.mad.java.samples.beans.MovementState;
+import com.mad.java.samples.spatbeans.MovementState;
 import com.mad.java.samples.utils.HeaderResolver;
 import com.mad.java.samples.utils.IntersectionStateResolver;
 import com.mad.java.samples.utils.SpatResolver;
@@ -20,12 +20,13 @@ import java.util.List;
 public class XMLProcessor {
 
     private static Logger log = Logger.getLogger(XMLProcessor.class);
-    private static final String FILE_LOCATION =
-            "/Users/madhawa/Downloads/CustomerSupport/TfL/packs/SampleMessages/SpatEx4.xml";
+    private static final String FILE_LOCATION
+            = "/Users/madhawa/Downloads/CustomerSupport/TfL/packs/SampleMessages/SpatEx4Edited.xml";
 
-    public XMLProcessor() {
+    private XMLProcessor() {
         //Get complete xml and convert it to a OMElement
         OMElement jt = mapXMLtoDOM(FILE_LOCATION);
+        long startTime = System.currentTimeMillis();
 
         //Pass the above xml element and get the header values sorted
         HeaderResolver headersResolver = new HeaderResolver();
@@ -39,22 +40,20 @@ public class XMLProcessor {
         StatesResolver statesResolver = new StatesResolver();
         spatResolver.mapSpatValues(jt);
         int i = 0;
-        for(OMElement temp : intersectionStateResolver.getIntersectionStateNodes(jt) ){
+        for (OMElement temp : intersectionStateResolver.getIntersectionStateNodes(jt)) {
             statesResolver.elementWriter(temp);
             movementStatelist = statesResolver.getMovementStatelist();
             statesResolver.resetMovementStatelist();
             spatResolver.setStatesToSpatMessage(movementStatelist, i);
             i++;
         }
+        long endTime = System.currentTimeMillis();
+        log.info("Execution Took " + (endTime - startTime) + " ms");
         spatResolver.printSPATMMessage();
     }
 
     public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
         new XMLProcessor();
-        long endTime = System.currentTimeMillis();
-        log.error("+++++++++++++++++++++++++++++++++ Took "+(endTime - startTime) + " ms");
-
     }
 
     private OMElement mapXMLtoDOM(String fileLocation) {
@@ -70,6 +69,5 @@ public class XMLProcessor {
         }
         return fileElement;
     }
-
 
 }

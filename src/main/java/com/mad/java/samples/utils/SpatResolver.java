@@ -1,13 +1,13 @@
 package com.mad.java.samples.utils;
 
 import com.mad.java.samples.XMLProcessor;
-import com.mad.java.samples.beans.Id;
-import com.mad.java.samples.beans.IntersectionState;
-import com.mad.java.samples.beans.Intersections;
-import com.mad.java.samples.beans.MovementEvent;
-import com.mad.java.samples.beans.MovementState;
-import com.mad.java.samples.beans.Spat;
-import com.mad.java.samples.beans.States;
+import com.mad.java.samples.spatbeans.Id;
+import com.mad.java.samples.spatbeans.IntersectionState;
+import com.mad.java.samples.spatbeans.Intersections;
+import com.mad.java.samples.spatbeans.MovementEvent;
+import com.mad.java.samples.spatbeans.MovementState;
+import com.mad.java.samples.spatbeans.Spat;
+import com.mad.java.samples.spatbeans.States;
 import org.apache.axiom.om.OMElement;
 import org.apache.log4j.Logger;
 
