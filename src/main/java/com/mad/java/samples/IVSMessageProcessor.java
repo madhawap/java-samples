@@ -96,7 +96,7 @@ public class IVSMessageProcessor {
                     // ("id")));
                     String assetNumber = vmsUnitChildren.getAttributeValue(new QName("id"));
                     getRelatedLookuptableData(assetNumber, ivsTempData);
-                } else if(vmsUnitChildren.getLocalName().equals("vms")){
+                } else if (vmsUnitChildren.getLocalName().equals("vms")) {
                     Iterator<?> vmsIterator = vmsUnitChildren.getChildElements();
                     log.debug("gggggggggggggggggggg");
                     getHORUSPictoCode(ivsTempData, vmsIterator);
@@ -105,7 +105,7 @@ public class IVSMessageProcessor {
         }
     }
 
-    private void getHORUSPictoCode(IVSTempData ivsTempData, Iterator<?> outervmsElementIterator){
+    private void getHORUSPictoCode(IVSTempData ivsTempData, Iterator<?> outervmsElementIterator) {
         if (outervmsElementIterator != null) {
             //-------------------
             while (outervmsElementIterator.hasNext()) {
@@ -123,66 +123,68 @@ public class IVSMessageProcessor {
                                 OMElement invmsMessage = (OMElement) outervmsMessageIterator.next();
                                 log.debug("+++++++++++++++++++++++++++++++++ vmsMessage " + invmsMessage
                                         .getLocalName());
-                                if(invmsMessage.getLocalName().equals("vmsMessage")){
+                                if (invmsMessage.getLocalName().equals("vmsMessage")) {
                                     Iterator<?> invmsMessageIterator = invmsMessage.getChildElements();
                                     //------------------
-                                    while(invmsMessageIterator.hasNext()){
-                                        OMElement outervmsPictogramDisplayArea = (OMElement)
-                                                invmsMessageIterator.next();
-                                        log.debug("wmwmwmwmwmwmwmwmwmwmwmwmwmw vmsPictogramDisplayArea " +
-                                                outervmsPictogramDisplayArea
-                                                .getLocalName());
-                                        if(outervmsPictogramDisplayArea.getLocalName().equals(
-                                                "vmsPictogramDisplayArea")){
-                                            Iterator<?> outervmsPictogramDisplayAreaIterator =
-                                                    outervmsPictogramDisplayArea
-                                                    .getChildElements();
+                                    while (invmsMessageIterator.hasNext()) {
+                                        OMElement outervmsPictogramDisplayArea
+                                                = (OMElement) invmsMessageIterator.next();
+                                        log.debug("wmwmwmwmwmwmwmwmwmwmwmwmwmw vmsPictogramDisplayArea "
+                                                + outervmsPictogramDisplayArea.getLocalName());
+                                        if (outervmsPictogramDisplayArea.getLocalName().equals(
+                                                "vmsPictogramDisplayArea")) {
+                                            Iterator<?> outervmsPictogramDisplayAreaIterator
+                                                    = outervmsPictogramDisplayArea.getChildElements();
                                             //------------------
-                                            while (outervmsPictogramDisplayAreaIterator.hasNext()){
-                                                OMElement innervmsPictogramDisplayArea = (OMElement)
-                                                        outervmsPictogramDisplayAreaIterator.next();
+                                            while (outervmsPictogramDisplayAreaIterator.hasNext()) {
+                                                OMElement innervmsPictogramDisplayArea
+                                                        = (OMElement) outervmsPictogramDisplayAreaIterator
+                                                        .next();
                                                 log.debug("eeeeeeeeeeeeeeeeeeeeeeeeeee "
                                                         + "vmsPictogramDisplayArea " +
                                                         innervmsPictogramDisplayArea.getLocalName());
-                                                if(innervmsPictogramDisplayArea.getLocalName().equals(
-                                                        "vmsPictogramDisplayArea")){
-                                                    Iterator<?> innervmsPictogramDisplayAreaIterator =
-                                                            innervmsPictogramDisplayArea.getChildElements();
+                                                if (innervmsPictogramDisplayArea.getLocalName().equals(
+                                                        "vmsPictogramDisplayArea")) {
+                                                    Iterator<?> innervmsPictogramDisplayAreaIterator
+                                                            = innervmsPictogramDisplayArea.getChildElements();
                                                     //------------------
-                                                    while(innervmsPictogramDisplayAreaIterator.hasNext()){
-                                                        OMElement outervmsPictogram = (OMElement)
-                                                                innervmsPictogramDisplayAreaIterator.next();
-                                                        log.debug("adadadadadadadadadadadadadadadada " +
-                                                                outervmsPictogram.getLocalName());
-                                                        if(outervmsPictogram.getLocalName().equals(
-                                                                "vmsPictogram")){
-                                                            Iterator<?> outervmsPictogramIterator =
-                                                                    outervmsPictogram.getChildElements();
+                                                    while (innervmsPictogramDisplayAreaIterator.hasNext()) {
+                                                        OMElement outervmsPictogram
+                                                                = (OMElement) innervmsPictogramDisplayAreaIterator
+                                                                .next();
+                                                        log.debug("adadadadadadadadadadadadadadadada "
+                                                                + outervmsPictogram.getLocalName());
+                                                        if (outervmsPictogram.getLocalName().equals(
+                                                                "vmsPictogram")) {
+                                                            Iterator<?> outervmsPictogramIterator
+                                                                    = outervmsPictogram.getChildElements();
                                                             //-----------------
-                                                            while (outervmsPictogramIterator.hasNext()){
-                                                                OMElement innervmsPictogram = (OMElement)
-                                                                outervmsPictogramIterator.next();
-                                                                log.debug("lmlmlmlmlmlmlmlmlmlmlmlmlml "
-                                                                        + "" + innervmsPictogram
-                                                                        .getLocalName());
-                                                                if(innervmsPictogram.getLocalName().equals(
-                                                                        "vmsPictogram")){
-                                                                    Iterator<?> innervmsPictogramIterator =
-                                                                            innervmsPictogram
-                                                                                    .getChildElements();
+                                                            while (outervmsPictogramIterator.hasNext()) {
+                                                                OMElement innervmsPictogram
+                                                                        = (OMElement) outervmsPictogramIterator
+                                                                        .next();
+                                                                log.debug("lmlmlmlmlmlmlmlmlmlmlmlmlml " + ""
+                                                                        + innervmsPictogram.getLocalName());
+                                                                if (innervmsPictogram.getLocalName().equals(
+                                                                        "vmsPictogram")) {
+                                                                    Iterator<?> innervmsPictogramIterator
+                                                                            = innervmsPictogram
+                                                                            .getChildElements();
                                                                     //-----------------
-                                                                    while(innervmsPictogramIterator.hasNext()){
+                                                                    while (innervmsPictogramIterator
+                                                                            .hasNext()) {
                                                                         OMElement
                                                                                 innervpictogramCodemsPictogram
-                                                                                = (OMElement)
-                                                                                innervmsPictogramIterator.next();
-                                                                        log.debug
-                                                                                ("oooooooooooooooooooooooooo "
-                                                                                + "" + innervpictogramCodemsPictogram
-                                                                                .getLocalName());
-                                                                        if(innervpictogramCodemsPictogram
+                                                                                = (OMElement) innervmsPictogramIterator
+                                                                                .next();
+                                                                        log.debug(
+                                                                                "oooooooooooooooooooooooooo "
+                                                                                        + ""
+                                                                                        + innervpictogramCodemsPictogram
+                                                                                        .getLocalName());
+                                                                        if (innervpictogramCodemsPictogram
                                                                                 .getLocalName().equals(
-                                                                                "pictogramCode")) {
+                                                                                        "pictogramCode")) {
                                                                             String horuspictoCode
                                                                                     = innervpictogramCodemsPictogram
                                                                                     .getText();
@@ -256,9 +258,9 @@ public class IVSMessageProcessor {
         ivsTempData.setDirectionOfTravel(lookUpData.getDirectionOfTravel());
     }
 
-    private void getrelatedPictoCodeDetails(String pictoCode, IVSTempData ivsTempData ) {
-        for(PictoCodeLookUpData pictoCodeLookUpData : pictolookUpDataList ){
-            if(pictoCodeLookUpData.getHorusCode() == Integer.parseInt(pictoCode)){
+    private void getrelatedPictoCodeDetails(String pictoCode, IVSTempData ivsTempData) {
+        for (PictoCodeLookUpData pictoCodeLookUpData : pictolookUpDataList) {
+            if (pictoCodeLookUpData.getHorusCode() == Integer.parseInt(pictoCode)) {
                 ivsTempData.setServiceCategoryCode(pictoCodeLookUpData.getServiceCategoryCode());
                 //log.error(pictoCodeLookUpData.getServiceCategoryCode());
                 //log.error(ivsTempData.getGantryLatitude());
