@@ -39,18 +39,18 @@ public class SpatResolver {
                     OMElement pp2 = (OMElement) ite2.next();
                     //log.error("pp2" + pp2.getLocalName());
                     Iterator ite3 = pp2.getChildElements();
-                    while(ite3.hasNext()){
+                    while (ite3.hasNext()) {
                         IntersectionState intersectionState = new IntersectionState();
                         OMElement pp3 = (OMElement) ite3.next();
                         //intersectionsState
                         //log.error("pp3" + pp3.getLocalName());
                         Iterator ite4 = pp3.getChildElements();
-                        while(ite4.hasNext() && !pp3.getLocalName().equals("states")){
+                        while (ite4.hasNext() && !pp3.getLocalName().equals("states")) {
                             OMElement pp4 = (OMElement) ite4.next();
                             //name
                             //log.error("pp4" + pp4.getLocalName());
                             Iterator ite5 = pp4.getChildElements();
-                            if(ite5.hasNext() && !pp4.getLocalName().equals("states")) {
+                            if (ite5.hasNext() && !pp4.getLocalName().equals("states")) {
                                 while (ite5.hasNext() && !pp4.getLocalName().equals("states")) {
                                     OMElement pp5 = (OMElement) ite5.next();
                                     //log.error("pp5" + pp5.getLocalName());
@@ -62,19 +62,19 @@ public class SpatResolver {
                                         //log.error(pp5.getText());
                                     }
                                 }
-                            } else if(pp4.getLocalName().equals("name")){
+                            } else if (pp4.getLocalName().equals("name")) {
                                 intersectionState.setName(pp4.getText());
                                 //log.error(pp4.getText());
-                            } else if(pp4.getLocalName().equals("revision")){
+                            } else if (pp4.getLocalName().equals("revision")) {
                                 intersectionState.setRevision(pp4.getText());
                                 //log.error(pp4.getText());
-                            } else if(pp4.getLocalName().equals("status")){
+                            } else if (pp4.getLocalName().equals("status")) {
                                 intersectionState.setStatus(pp4.getText());
                                 //log.error(pp4.getText());
-                            } else if(pp4.getLocalName().equals("moy")){
+                            } else if (pp4.getLocalName().equals("moy")) {
                                 intersectionState.setMoy(pp4.getText());
                                 //log.error(pp4.getText());
-                            } else if(pp4.getLocalName().equals("timeStamp")){
+                            } else if (pp4.getLocalName().equals("timeStamp")) {
                                 intersectionState.setTimeStamp(pp4.getText());
                                 //log.error(pp4.getText());
                             }
@@ -96,28 +96,32 @@ public class SpatResolver {
 
     }
 
-
-    public void setStatesToSpatMessage(List<MovementState> movementStatelist, int i){
+    public void setStatesToSpatMessage(List<MovementState> movementStatelist, int i) {
         States states = new States();
         states.setMovementStateList(movementStatelist);
         spatM.getIntersections().getIntersectionStateList().get(i).setStates(states);
     }
 
-    public void printSPATMMessage(){
+    public void printSPATMMessage() {
         log.error("===============================================spat"
                 + "=================================================");
         int j = 0;
         for (IntersectionState tempState : spatM.getIntersections().getIntersectionStateList()) {
             log.error("name : " + spatM.getIntersections().getIntersectionStateList().get(j).getName());
-            log.error("id -> region : " + spatM.getIntersections().getIntersectionStateList().get(j).getId().getRegion());
-            log.error("id -> id : " + spatM.getIntersections().getIntersectionStateList().get(j).getId().getId());
-            log.error("revision : " + spatM.getIntersections().getIntersectionStateList().get(j).getRevision());
+            log.error("id -> region : " + spatM.getIntersections().getIntersectionStateList().get(j).getId()
+                    .getRegion());
+            log.error("id -> id : " + spatM.getIntersections().getIntersectionStateList().get(j).getId()
+                    .getId());
+            log.error(
+                    "revision : " + spatM.getIntersections().getIntersectionStateList().get(j).getRevision());
             log.error("status : " + spatM.getIntersections().getIntersectionStateList().get(j).getStatus());
             log.error("moy : " + spatM.getIntersections().getIntersectionStateList().get(j).getMoy());
-            log.error("timeStamp : " + spatM.getIntersections().getIntersectionStateList().get(j).getTimeStamp());
+            log.error("timeStamp : " + spatM.getIntersections().getIntersectionStateList().get(j)
+                    .getTimeStamp());
             int i = 0;
 
-            for (MovementState temp : spatM.getIntersections().getIntersectionStateList().get(j).getStates().getMovementStateList()) {
+            for (MovementState temp : spatM.getIntersections().getIntersectionStateList().get(j).getStates()
+                    .getMovementStateList()) {
                 log.error("------------------------------MovementState - " + i +
                         " ------------------------------");
                 log.error("MovementName : " + temp.getMovementName());
@@ -139,7 +143,8 @@ public class SpatResolver {
                         log.error("Confidence : " + temp1.getTiming().getConfidence());
                     }
                 }
-                log.error("------------------------------MovementState - " + i + " " + "------------------------------");
+                log.error("------------------------------MovementState - " + i + " "
+                        + "------------------------------");
                 i++;
 
             }

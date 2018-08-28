@@ -62,7 +62,6 @@ public class IVSMessageProcessor {
             while (d2LogicalModelElementCheckIterator != null && d2LogicalModelElementCheckIterator
                     .hasNext()) {
                 OMElement d2LogicalModelChildren = (OMElement) d2LogicalModelElementCheckIterator.next();
-                //log.error("mediate : " + d2LogicalModelChildren.getLocalName());
                 if (d2LogicalModelChildren.getLocalName().equals("payloadPublication")) {
                     Iterator<?> payloadPublicationChildrenCheckIterator = d2LogicalModelChildren
                             .getChildElements();
@@ -71,12 +70,10 @@ public class IVSMessageProcessor {
                             && payloadPublicationChildrenCheckIterator.hasNext()) {
                         OMElement payloadPublicationChildren
                                 = (OMElement) payloadPublicationChildrenCheckIterator.next();
-                        //log.error("mediate " + i + " : " + payloadPublicationChildren.getLocalName());
                         i++;
                         if (payloadPublicationChildren.getLocalName().equals("vmsUnit")) {
                             Iterator<?> vmsUnitChildrenCheckIterator = payloadPublicationChildren
                                     .getChildElements();
-                            log.debug("mmmmmmmmmm");
                             vmsUnitDataHandler(vmsUnitChildrenCheckIterator);
                         }
                     }
@@ -92,13 +89,10 @@ public class IVSMessageProcessor {
             while (vmsUnitChildrenCheckIterator.hasNext()) {
                 OMElement vmsUnitChildren = (OMElement) vmsUnitChildrenCheckIterator.next();
                 if (vmsUnitChildren.getLocalName().equals("vmsUnitReference")) {
-                    //log.error("vmsUnitDataHandler  : " + vmsUnitChildren.getAttributeValue(new QName
-                    // ("id")));
                     String assetNumber = vmsUnitChildren.getAttributeValue(new QName("id"));
                     getRelatedLookuptableData(assetNumber, ivsTempData);
                 } else if (vmsUnitChildren.getLocalName().equals("vms")) {
                     Iterator<?> vmsIterator = vmsUnitChildren.getChildElements();
-                    log.debug("gggggggggggggggggggg");
                     getHORUSPictoCode(ivsTempData, vmsIterator);
                 }
             }
@@ -115,22 +109,21 @@ public class IVSMessageProcessor {
                     //-----------------
                     while (invmsIterator.hasNext()) {
                         OMElement outervmsMessage = (OMElement) invmsIterator.next();
-                        log.debug("tttttttttttttttttttttt vmsWorking " + outervmsMessage.getLocalName());
+                        log.debug("getHORUSPictoCode " + outervmsMessage.getLocalName());
                         if (outervmsMessage.getLocalName().equals("vmsMessage")) {
                             Iterator<?> outervmsMessageIterator = outervmsMessage.getChildElements();
                             //----------------
                             while (outervmsMessageIterator.hasNext()) {
                                 OMElement invmsMessage = (OMElement) outervmsMessageIterator.next();
-                                log.debug("+++++++++++++++++++++++++++++++++ vmsMessage " + invmsMessage
-                                        .getLocalName());
+                                log.debug("getHORUSPictoCode " + invmsMessage.getLocalName());
                                 if (invmsMessage.getLocalName().equals("vmsMessage")) {
                                     Iterator<?> invmsMessageIterator = invmsMessage.getChildElements();
                                     //------------------
                                     while (invmsMessageIterator.hasNext()) {
                                         OMElement outervmsPictogramDisplayArea
                                                 = (OMElement) invmsMessageIterator.next();
-                                        log.debug("wmwmwmwmwmwmwmwmwmwmwmwmwmw vmsPictogramDisplayArea "
-                                                + outervmsPictogramDisplayArea.getLocalName());
+                                        log.debug("getHORUSPictoCode " + outervmsPictogramDisplayArea
+                                                .getLocalName());
                                         if (outervmsPictogramDisplayArea.getLocalName().equals(
                                                 "vmsPictogramDisplayArea")) {
                                             Iterator<?> outervmsPictogramDisplayAreaIterator
@@ -140,9 +133,8 @@ public class IVSMessageProcessor {
                                                 OMElement innervmsPictogramDisplayArea
                                                         = (OMElement) outervmsPictogramDisplayAreaIterator
                                                         .next();
-                                                log.debug("eeeeeeeeeeeeeeeeeeeeeeeeeee "
-                                                        + "vmsPictogramDisplayArea " +
-                                                        innervmsPictogramDisplayArea.getLocalName());
+                                                log.debug("getHORUSPictoCode " + innervmsPictogramDisplayArea
+                                                        .getLocalName());
                                                 if (innervmsPictogramDisplayArea.getLocalName().equals(
                                                         "vmsPictogramDisplayArea")) {
                                                     Iterator<?> innervmsPictogramDisplayAreaIterator
@@ -152,8 +144,8 @@ public class IVSMessageProcessor {
                                                         OMElement outervmsPictogram
                                                                 = (OMElement) innervmsPictogramDisplayAreaIterator
                                                                 .next();
-                                                        log.debug("adadadadadadadadadadadadadadadada "
-                                                                + outervmsPictogram.getLocalName());
+                                                        log.debug("getHORUSPictoCode " + outervmsPictogram
+                                                                .getLocalName());
                                                         if (outervmsPictogram.getLocalName().equals(
                                                                 "vmsPictogram")) {
                                                             Iterator<?> outervmsPictogramIterator
@@ -163,7 +155,7 @@ public class IVSMessageProcessor {
                                                                 OMElement innervmsPictogram
                                                                         = (OMElement) outervmsPictogramIterator
                                                                         .next();
-                                                                log.debug("lmlmlmlmlmlmlmlmlmlmlmlmlml " + ""
+                                                                log.debug("getHORUSPictoCode " + ""
                                                                         + innervmsPictogram.getLocalName());
                                                                 if (innervmsPictogram.getLocalName().equals(
                                                                         "vmsPictogram")) {
@@ -177,20 +169,17 @@ public class IVSMessageProcessor {
                                                                                 innervpictogramCodemsPictogram
                                                                                 = (OMElement) innervmsPictogramIterator
                                                                                 .next();
-                                                                        log.debug(
-                                                                                "oooooooooooooooooooooooooo "
-                                                                                        + ""
-                                                                                        + innervpictogramCodemsPictogram
-                                                                                        .getLocalName());
+                                                                        log.debug("getHORUSPictoCode"
+                                                                                + innervpictogramCodemsPictogram
+                                                                                .getLocalName());
                                                                         if (innervpictogramCodemsPictogram
                                                                                 .getLocalName().equals(
                                                                                         "pictogramCode")) {
                                                                             String horuspictoCode
                                                                                     = innervpictogramCodemsPictogram
                                                                                     .getText();
-                                                                            log.debug(
-                                                                                    "-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0- "
-                                                                                            + horuspictoCode);
+                                                                            log.debug("getHORUSPictoCode"
+                                                                                    + horuspictoCode);
                                                                             getrelatedPictoCodeDetails(
                                                                                     horuspictoCode,
                                                                                     ivsTempData);
@@ -262,12 +251,9 @@ public class IVSMessageProcessor {
         for (PictoCodeLookUpData pictoCodeLookUpData : pictolookUpDataList) {
             if (pictoCodeLookUpData.getHorusCode() == Integer.parseInt(pictoCode)) {
                 ivsTempData.setServiceCategoryCode(pictoCodeLookUpData.getServiceCategoryCode());
-                //log.error(pictoCodeLookUpData.getServiceCategoryCode());
-                //log.error(ivsTempData.getGantryLatitude());
                 ivsTempData.setPictogramCode(pictoCodeLookUpData.getPictogramCode());
                 ivsTempData.setAttrIndCode(pictoCodeLookUpData.getAttrIndCode());
                 ivsTempData.setHorusCode(Integer.parseInt(pictoCode));
-                //log.error(Integer.parseInt(pictoCode));
                 ivsTempData.setIso14823Attributes(pictoCodeLookUpData.getIso14823Attributes());
                 ivsTempData.setSpm(pictoCodeLookUpData.getSpm());
                 ivsTempData.setUnit(pictoCodeLookUpData.getUnit());
@@ -326,7 +312,7 @@ public class IVSMessageProcessor {
                     "/Users/madhawa/Downloads/CustomerSupport/TfL/ASN/Lookuptables/gantry_lookup_table.json");
             lookUpDataList = jsonToPOJO.jsonArrayToList(readerJsonArray);
         } catch (IOException e) {
-            log.error("");
+            log.error("Error while reading the json array");
         } finally {
             try {
                 if (readerJsonArray != null) {
@@ -334,7 +320,7 @@ public class IVSMessageProcessor {
                 }
 
             } catch (IOException e) {
-                log.error("");
+                log.error("Error while closing readerJsonArray");
             }
         }
 
@@ -345,7 +331,7 @@ public class IVSMessageProcessor {
                             + ".json");
             pictolookUpDataList = jsonToPOJO.jsonPictoArrayToList(readerPictoJsonArray);
         } catch (IOException e) {
-            log.error("");
+            log.error("Error while reading the json array");
         } finally {
             try {
                 if (readerPictoJsonArray != null) {
@@ -353,7 +339,7 @@ public class IVSMessageProcessor {
                 }
 
             } catch (IOException e) {
-                log.error("");
+                log.error("Error while closing readerPictoJsonArray");
             }
         }
     }

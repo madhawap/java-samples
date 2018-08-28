@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by madhawa on 7/30/18.
+ *
  */
 public class IntersectionStateResolver {
 
@@ -20,12 +20,12 @@ public class IntersectionStateResolver {
             while (ite1.hasNext()) {
                 fileElement1 = (OMElement) ite1.next();
                 Iterator<?> ite2 = fileElement1.getChildElements();
-                if(ite2.hasNext() && fileElement1.getLocalName().equals("spat")) {
-                    while(ite2.hasNext()){
+                if (ite2.hasNext() && fileElement1.getLocalName().equals("spat")) {
+                    while (ite2.hasNext()) {
                         fileElement2 = (OMElement) ite2.next();
                         Iterator<?> ite3 = fileElement2.getChildElements();
-                        if(ite3.hasNext() && fileElement2.getLocalName().equals("intersections")) {
-                            while(ite3.hasNext() && fileElement2.getLocalName().equals("intersections")) {
+                        if (ite3.hasNext() && fileElement2.getLocalName().equals("intersections")) {
+                            while (ite3.hasNext() && fileElement2.getLocalName().equals("intersections")) {
                                 OMElement fileElement3 = (OMElement) ite3.next();
                                 intersectionsStateList.add(fileElement3);
                             }
